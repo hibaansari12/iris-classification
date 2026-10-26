@@ -25,8 +25,6 @@ Given sepal length, sepal width, petal length, and petal width, predict the flow
 Both models got 28 of 30 test flowers right. All mistakes were between versicolor and virginica, whose measurements overlap.
 
 ## Screenshots
-## Screenshots
-
 ### Decision Boundaries
 <img width="1457" height="588" alt="Decision boundaries of Logistic Regression and Decision Tree" src="https://github.com/user-attachments/assets/c7e74110-3fc5-4eaa-a89f-b2df58b6a684" />
 
