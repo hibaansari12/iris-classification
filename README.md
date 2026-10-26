@@ -25,7 +25,9 @@ Given sepal length, sepal width, petal length, and petal width, predict the flow
 Both models got 28 of 30 test flowers right. All mistakes were between versicolor and virginica, whose measurements overlap.
 
 ## Screenshots
-_Add screenshots of the pairplot, confusion matrices, and decision boundaries here._
+![Confusion matrices](images/confusion_matrices.png)
+<img width="1485" height="482" alt="image" src="https://github.com/user-attachments/assets/afa8cde9-9fd6-4ed5-b4e6-0eb71fd5a2f4" />
+
 
 ## How to run
 ```bash
