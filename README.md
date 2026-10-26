@@ -25,8 +25,22 @@ Given sepal length, sepal width, petal length, and petal width, predict the flow
 Both models got 28 of 30 test flowers right. All mistakes were between versicolor and virginica, whose measurements overlap.
 
 ## Screenshots
-![Confusion matrices](images/confusion_matrices.png)
-<img width="1485" height="482" alt="image" src="https://github.com/user-attachments/assets/afa8cde9-9fd6-4ed5-b4e6-0eb71fd5a2f4" />
+## Screenshots
+
+### Decision Boundaries
+<img width="1457" height="588" alt="Decision boundaries of Logistic Regression and Decision Tree" src="https://github.com/user-attachments/assets/c7e74110-3fc5-4eaa-a89f-b2df58b6a684" />
+
+*Decision boundaries using petal length and petal width. Logistic Regression draws smooth, straight borders, while the Decision Tree draws box-shaped regions. Stars are test flowers.*
+
+### Confusion Matrices
+<img width="1485" height="482" alt="Confusion matrices for both models" src="https://github.com/user-attachments/assets/afa8cde9-9fd6-4ed5-b4e6-0eb71fd5a2f4" />
+
+*Both models classified setosa perfectly and made 2 mistakes each, between versicolor and virginica.*
+
+### Pairplot (Exploratory Data Analysis)
+<img width="992" height="827" alt="Pairplot of the Iris dataset colored by species" src="https://github.com/user-attachments/assets/412ff7b3-9fcd-49f6-8509-06e0df4ef4f6" />
+
+*Pairplot of all four features, coloured by species. Setosa is clearly separated, while versicolor and virginica overlap slightly.*
 
 
 ## How to run
