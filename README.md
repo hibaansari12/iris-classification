@@ -24,20 +24,32 @@ Given sepal length, sepal width, petal length, and petal width, predict the flow
 
 Both models got 28 of 30 test flowers right. All mistakes were between versicolor and virginica, whose measurements overlap.
 
-## Screenshots
-### Decision Boundaries
-<img width="1457" height="588" alt="Decision boundaries of Logistic Regression and Decision Tree" src="https://github.com/user-attachments/assets/c7e74110-3fc5-4eaa-a89f-b2df58b6a684" />
+## 📊 Results & Visualisations
 
-*Decision boundaries using petal length and petal width. Logistic Regression draws smooth, straight borders, while the Decision Tree draws box-shaped regions. Stars are test flowers.*
+### 1️⃣ Exploring the data
+<p align="center">
+  <img width="75%" alt="Pairplot of the Iris dataset colored by species" src="https://github.com/user-attachments/assets/412ff7b3-9fcd-49f6-8509-06e0df4ef4f6" />
+</p>
 
-### Confusion Matrices
-<img width="1485" height="482" alt="Confusion matrices for both models" src="https://github.com/user-attachments/assets/afa8cde9-9fd6-4ed5-b4e6-0eb71fd5a2f4" />
+> Setosa is clearly separated from the other two species, while versicolor and virginica overlap slightly.
 
-*Both models classified setosa perfectly and made 2 mistakes each, between versicolor and virginica.*
+---
 
-### Pairplot (Exploratory Data Analysis)
-<img width="992" height="827" alt="Pairplot of the Iris dataset colored by species" src="https://github.com/user-attachments/assets/412ff7b3-9fcd-49f6-8509-06e0df4ef4f6" />
+### 2️⃣ Where do the models go wrong?
+<p align="center">
+  <img width="90%" alt="Confusion matrices for Logistic Regression and Decision Tree" src="https://github.com/user-attachments/assets/afa8cde9-9fd6-4ed5-b4e6-0eb71fd5a2f4" />
+</p>
 
+> Both models classified setosa perfectly and made 2 mistakes each, all between versicolor and virginica.
+
+---
+
+### 3️⃣ How each model separates the classes
+<p align="center">
+  <img width="95%" alt="Decision boundaries of Logistic Regression and Decision Tree using petal length and petal width" src="https://github.com/user-attachments/assets/c7e74110-3fc5-4eaa-a89f-b2df58b6a684" />
+</p>
+
+> Logistic Regression draws smooth, straight borders, while the Decision Tree draws box-shaped regions. Stars are test flowers.
 *Pairplot of all four features, coloured by species. Setosa is clearly separated, while versicolor and virginica overlap slightly.*
 # Task 2 — Real Estate Housing Price Prediction (OLS vs Ridge vs Lasso)
 
@@ -100,23 +112,71 @@ Best alphas from `GridSearchCV`: Ridge ≈ 1.16, Lasso ≈ 0.68.
 - **Regularisation shows feature importance.** In the Lasso path the tiny `ISLAND` category (5 rows) and the redundant counts are zeroed first, while `median_income`, `bedrooms_per_room` and `ocean_proximity_INLAND` persist.
 - **Linear models have limits here.** The $500k cap and a visible non-linearity (cheap areas over-predicted, expensive areas under-predicted) show up in the residual plots.
 
-## Visualisations
+## 📊 Results & Visualisations
 
-| | |
-|---|---|
-| ![Correlation heatmap](images/correlation_heatmap.png) | ![Metrics comparison](images/metrics_comparison.png) |
-| ![Predicted vs actual](images/predicted_vs_actual.png) | ![Residual analysis](images/residual_analysis.png) |
-| ![Alpha vs RMSE](images/alpha_vs_rmse.png) | ![Lasso path](images/lasso_path.png) |
+### 1️⃣ Multicollinearity check
+<p align="center">
+  <img width="75%" alt="Correlation heatmap of numeric features" src="https://github.com/user-attachments/assets/4423a65f-f3e3-410b-8cbe-a08ebbed7217" />
+</p>
 
-## Repository structure
+> `total_rooms`, `total_bedrooms`, `households` and `population` are strongly correlated with each other (VIF up to ~72). This is why regularisation was worth testing.
 
+---
+
+### 2️⃣ Model comparison: OLS vs Ridge vs Lasso
+<p align="center">
+  <img width="90%" alt="RMSE, MAE and R² comparison across models" src="https://github.com/user-attachments/assets/5dad5e85-ba3b-4a03-a9f4-61a6f08d1c7a" />
+</p>
+
+> All three models land on R² ≈ 0.653. The penalty barely matters with ~16,500 rows and 19 features.
+
+---
+
+### 3️⃣ How good are the predictions?
+**Predicted vs actual**
+<p align="center">
+  <img width="95%" alt="Predicted vs actual house values for each model" src="https://github.com/user-attachments/assets/eed1ed9f-a298-4915-89a8-be6a12294c5d" />
+</p>
+
+**Residual analysis**
+<p align="center">
+  <img width="80%" alt="Residual distributions and residual plots" src="https://github.com/user-attachments/assets/cf70000d-46d6-4346-8b8a-c0211e9c7fcc" />
+</p>
+
+> The $500k price cap creates a flat ceiling in the points, and the residuals show a clear non-linear pattern: cheap areas are over-predicted, expensive areas under-predicted.
+
+---
+
+### 4️⃣ Regularisation: tuning & feature importance
+**Alpha vs RMSE (GridSearchCV)**
+<p align="center">
+  <img width="95%" alt="Cross-validated RMSE across alpha values for Ridge and Lasso" src="https://github.com/user-attachments/assets/e3798c1d-60ca-4e91-be67-07758354a085" />
+</p>
+
+**Lasso coefficient path**
+<p align="center">
+  <img width="80%" alt="Lasso coefficient path showing features dropping to zero" src="https://github.com/user-attachments/assets/48430d2a-483e-42bc-83ec-0ec270cf3d6f" />
+</p>
+
+> Lasso zeroes out the 5-row `ISLAND` category and the redundant count features first, while `median_income`, `bedrooms_per_room` and `ocean_proximity_INLAND` survive the longest.
+
+## 📁 Repository structure
 ```
 .
-├── notebooks_regression_housing.ipynb   # full analysis (run top to bottom)
-├── housing.csv                          # California Housing dataset
-├── images/                              # plots used in this README
-├── requirements.txt
-└── README.md
+├── Task1_Iris_Classification/
+│   ├── Iris_Classification.ipynb            # full analysis
+│   ├── images/                              # plots used in the README
+│   ├── requirements.txt
+│   └── README.md
+│
+├── Task2_Housing_Price_Prediction/
+│   ├── notebooks_regression_housing.ipynb   # full analysis
+│   ├── housing.csv                          # California Housing dataset
+│   ├── images/                              # plots used in the README
+│   ├── requirements.txt
+│   └── README.md
+│
+└── README.md                                # overview of both tasks
 ```
 
 ## How to run
