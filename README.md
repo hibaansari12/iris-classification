@@ -163,20 +163,12 @@ Best alphas from `GridSearchCV`: Ridge ≈ 1.16, Lasso ≈ 0.68.
 ## 📁 Repository structure
 ```
 .
-├── Task1_Iris_Classification/
-│   ├── Iris_Classification.ipynb            # full analysis
-│   ├── images/                              # plots used in the README
-│   ├── requirements.txt
-│   └── README.md
-│
-├── Task2_Housing_Price_Prediction/
-│   ├── notebooks_regression_housing.ipynb   # full analysis
-│   ├── housing.csv                          # California Housing dataset
-│   ├── images/                              # plots used in the README
-│   ├── requirements.txt
-│   └── README.md
-│
-└── README.md                                # overview of both tasks
+├── notebooks_Iris_Classification_Task1.ipynb   # Task 1: Iris classification
+├── iris.csv                                    # Task 1 dataset
+├── Task2_ regression_housing.ipynb             # Task 2: Housing regression
+├── housing.csv                                 # Task 2 dataset (California Housing)
+├── requirements.txt                            # shared dependencies for both tasks
+└── README.md                                   # overview, results and plots
 ```
 
 ## How to run
